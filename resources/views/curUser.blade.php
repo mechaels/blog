@@ -5,6 +5,16 @@
         <div class="top-cover center-block ">
             It is {{$user->name}}'s profile
             <br>
+            Current grade: 1
+            <br>
+            Choose your grade:
+            <input name="rate" type="radio" value="1">
+            <input name="rate" type="radio" value="2">
+            <input name="rate" type="radio" value="3">
+            <input name="rate" type="radio" value="4">
+            <input name="rate" type="radio" value="5" checked>
+            <button type="submit" class="btn btn-outline-primary">   Send    </button>
+            <br>
             List of films:
             <br>
             <ul>

@@ -3,7 +3,7 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="top-cover center-block ">
-    <h3>Введите информацию о фильме:</h3>
+    <h3>Enter movie info:</h3>
     <form action = '/newFilm' method = 'POST' enctype="multipart/form-data">
         @csrf
         <label>
