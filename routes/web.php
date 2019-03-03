@@ -33,4 +33,6 @@ Route::get('/allUsers/{user}','UserController@currentUser');
 
 Route::post('/allUsers','UserController@addPost');
 
+Route::post('/allUsers1','UserController@addRate');
+
 //Route::get('/test', 'TestController@test');

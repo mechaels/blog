@@ -5,15 +5,24 @@
         <div class="top-cover center-block ">
             It is {{$user->name}}'s profile
             <br>
-            Current grade: 1
-            <br>
-            Choose your grade:
-            <input name="rate" type="radio" value="1">
-            <input name="rate" type="radio" value="2">
-            <input name="rate" type="radio" value="3">
-            <input name="rate" type="radio" value="4">
-            <input name="rate" type="radio" value="5" checked>
-            <button type="submit" class="btn btn-outline-primary">   Send    </button>
+            Current grade: {{$avgRate}}
+            @if(count($rating) > 0)
+                <br>
+                You have already rated
+            @else
+                <br>
+                Choose your grade:
+                <form action="/allUsers1" method="post">
+                    @csrf
+                    <input name="rate" type="radio" value="1">
+                    <input name="rate" type="radio" value="2">
+                    <input name="rate" type="radio" value="3">
+                    <input name="rate" type="radio" value="4">
+                    <input name="rate" type="radio" value="5" checked>
+                    <input type = 'hidden' name = 'id' value='{{$user->id}}'>
+                    <button type="submit" class="btn btn-outline-primary">   Send    </button>
+                </form>
+            @endif
             <br>
             List of films:
             <br>
