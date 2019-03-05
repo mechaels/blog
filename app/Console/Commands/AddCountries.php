@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Country;
 use Illuminate\Console\Command;
 
+//Выгружаем список стран в базу командой
 class AddCountries extends Command
 {
     /**

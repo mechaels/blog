@@ -24,6 +24,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+    //Профиль пользователя
     public function index()
     {
         $id = Auth::id();

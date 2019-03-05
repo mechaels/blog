@@ -11,10 +11,12 @@ use Illuminate\Support\Facades\DB;
 class FilmsController extends Controller
 {
 
+    //Добавляем фильм
     public function store(Request $request)
     {
         $film = Films::find($request->name);
 
+        //Проверка, что такого названия еще нет в базе
         if($film->count() < 1){
             $path = $request->file('poster')->store('uploads', 'public');
 
@@ -31,6 +33,7 @@ class FilmsController extends Controller
 
     }
 
+    //Страница для добавления фильма
     public function addFilms()
     {
         $countries = Country::all();

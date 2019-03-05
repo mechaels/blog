@@ -24,6 +24,7 @@ class Films extends Model
         return $this->belongsTo('App\User','users_id','id');
     }
 
+    //ФИльмы пользователя
     public function current($id){
         $films = DB::table('films')
             ->where('users_id', '=', $id)
@@ -31,6 +32,7 @@ class Films extends Model
         return $films;
     }
 
+    //Последние 20 фильмов на главную страницу
     public function lastTwenty(){
         $films = DB::table('films')
             ->latest()
@@ -40,6 +42,7 @@ class Films extends Model
         return $films;
     }
 
+    //Ищем фильм по имени
     public static function find($name){
         $film = DB::table('films')
             ->select('id')

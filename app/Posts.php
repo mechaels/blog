@@ -13,6 +13,7 @@ class Posts extends Model
         'users_id'
     ];
 
+    //Получаем комментарии к профилю пользователя
     public static function userPosts($id){
         $posts = DB::table('posts')
             ->where('users_id', '=', $id)
@@ -21,6 +22,7 @@ class Posts extends Model
         return $posts;
     }
 
+    //Добавляем комментарий в базу
     public static function store(Request $request)
     {
             Posts::create([

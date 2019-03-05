@@ -34,6 +34,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Films');
     }
 
+    //Редактируем информацию о пользователе
     public static function edit(Request $request, $id){
 
         DB::table('users')
@@ -45,12 +46,14 @@ class User extends Authenticatable
             ]);
     }
 
+    //Ищем пользователя
     public static function find($id){
         $user = DB::table('users')->find($id);
 
         return $user;
     }
 
+    //Все пользователи
     public static function takeAll($id){
         $users = DB::table('users')
                     ->where('id','!=',$id)

@@ -18,18 +18,21 @@ class UserController extends Controller
         return view('editUser', compact('currentUser'));
     }
 
+    //Редактируем имя и номер телефона
     public function editUserPost(Request $request){
         //Обновить информацию о пользователе
         User::edit($request, Auth::id());
         return redirect('/editProfile');
     }
 
+    //Все пользователи
     public function allUsers(){
         //Получить всех пользователей
         $users = User::takeAll(Auth::id());
         return view('allUsers',compact('users'));
     }
 
+    //Выводим информацию о выбранном пользователе
     public function currentUser($id){
         //Находим пользователя
         $user = User::find($id);
@@ -45,6 +48,7 @@ class UserController extends Controller
         return view('curUser',compact('user', 'films','posts','rating','avgRate'));
     }
 
+    //Добавляем комменатарий
     public function addPost(Request $request){
         //Добавить комментарий
         Posts::store($request);
@@ -54,6 +58,7 @@ class UserController extends Controller
         );
     }
 
+    //Добавляем рейтинг
     public function addRate(Request $request){
         //Добавить оценку
         Rating::store($request, Auth::id(), $request->id);

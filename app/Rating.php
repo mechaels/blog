@@ -14,6 +14,7 @@ class Rating extends Model
         'toUsers_id'
     ];
 
+    //Ищем оставлялся рейтинг ранее
     public static function find($id, $curId){
         $rating = DB::table('rating')
             ->where([
@@ -25,6 +26,7 @@ class Rating extends Model
         return $rating;
     }
 
+    //Добавляем рейтинг в базу
     public static function store(Request $request, $id, $curId)
     {
         DB::table('rating')->insert(
@@ -40,6 +42,7 @@ class Rating extends Model
 
     }
 
+    //Средний рейтинг
     public static function averageRate($id){
         $rating = DB::table('rating')
             ->where('toUsers_id','=',$id)

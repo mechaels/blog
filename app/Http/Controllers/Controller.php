@@ -12,6 +12,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    //Главная страница
     public function index(){
         $film = new Films();
         $films = $film->lastTwenty();

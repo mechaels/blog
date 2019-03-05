@@ -15,6 +15,7 @@ class Country extends Model
         return $this->hasMany('App\Films');
     }
 
+
     public static function getAll(){
         $ch = curl_init();
 
@@ -32,6 +33,8 @@ class Country extends Model
 
         return json_decode($result);
     }
+
+    //Получаем страны из vk.api
     public static function getAll1()
     {
         $countries = curl_init();
@@ -48,6 +51,7 @@ class Country extends Model
         return $countries_res;
     }
 
+    //Добавляем страны в базу
     public static function add($countries)
     {
         foreach ($countries->response->items as $c){
