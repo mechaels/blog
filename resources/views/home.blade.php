@@ -18,7 +18,6 @@
                             <li type = 'none'>{{$film->name}}</li>
                         @endforeach
                     </ul>
-
                 </div>
             </div>
         </div>
