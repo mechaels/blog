@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class Posts extends Model
 {
@@ -25,6 +26,14 @@ class Posts extends Model
     //Добавляем комментарий в базу
     public static function store(Request $request)
     {
+
+        $validation = Validator::make($request->all(), ['text' => 'required']);
+
+        if ($validation->fails())
+        {
+            return redirect('curUser')->withErrors($validation);
+        }
+
             Posts::create([
                 'text' => $request->text,
                 'users_id' => $request->id

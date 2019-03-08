@@ -17,7 +17,7 @@ class CreateFilmsTable extends Migration
             $table->increments('id');
             $table->text('name');
             $table->date('year');
-            $table->longText('actors');
+            $table->longText('actors')->nullable();
             $table->integer('users_id');
             $table->integer('countries_id');
             $table->binary('poster');

@@ -2,13 +2,14 @@
 
 @section('content')
     <div class="row justify-content-center ">
-        <div class="top-cover center-block ">
+        <div class="center-block ">
             It is {{$user->name}}'s profile
             <br>
             Current grade: {{$avgRate}}
             @if(count($rating) > 0)
                 <br>
-                You have already rated
+                <p class="text-left"> You have already rated</p>
+
             @else
                 <br>
                 Choose your grade:
@@ -45,7 +46,8 @@
             <form action="/allUsers" method="post">
                 @csrf
                 <p><b>New comment:</b></p>
-                <textarea class = 'form-control' name="text"></textarea>
+                <textarea class = 'form-control' name="text"
+                          required oninvalid="this.setCustomValidity('Введите комментарий')" oninput="setCustomValidity('')"></textarea>
                 <input type = 'hidden' name = 'id' value='{{$user->id}}'>
                 <p><button type="submit" class="btn btn-outline-primary btn-block">   Add    </button></p>
             </form>
