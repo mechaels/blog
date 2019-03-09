@@ -36,18 +36,21 @@ class Films extends Model
     public function lastTwenty(){
         $films = DB::table('films')
             ->latest()
-            ->limit(20)
-            ->get();
+            ->paginate(20);;
 
         return $films;
     }
 
     //Ищем фильм по имени
-    public static function find($name){
+    public static function find($id){
         $film = DB::table('films')
-            ->select('id')
-            ->where('name','=',$name)
-            ->get();
+            ->selectRaw('films.id as id, films.name as name, countries.name as country, 
+            films.actors as actors, films.year as year, films.poster as poster, users.name as user')
+            ->Join('countries','films.countries_id','=','countries.id')
+            ->Join('users','users.id','=','films.users_id')
+            ->where('films.id','=',$id)
+            ->first();
+
         return $film;
     }
 

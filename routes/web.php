@@ -23,7 +23,7 @@ Route::get('/newFilm', 'FilmsController@addFilms')->name('newFilm');
 
 Route::post('/newFilm','FilmsController@store');
 
-Route::get('/editProfile', 'UserController@editGet');
+Route::get('/editProfile', 'UserController@editGet')->name('editProfile');
 
 Route::post('/editProfile','UserController@editUserPost');
 
@@ -34,5 +34,7 @@ Route::get('/allUsers/{user}','UserController@currentUser');
 Route::post('/allUsers','UserController@addPost');
 
 Route::post('/allUsers1','UserController@addRate');
+
+Route::get('/allFilms/{film}','FilmsController@currentFilm');
 
 //Route::get('/test', 'TestController@test');

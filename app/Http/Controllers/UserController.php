@@ -7,6 +7,7 @@ use App\Posts;
 use App\Rating;
 use App\User;
 use DummyFullModelClass;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,9 +21,22 @@ class UserController extends Controller
 
     //Редактируем имя и номер телефона
     public function editUserPost(Request $request){
+
+        $inform = 1;
+        $rules = array(
+            'name' => 'required'
+        );
+
+        $validation = Validator::make($request->all(), $rules);
+
+        if ($validation->fails())
+        {
+            return redirect('editProfile')->withErrors($validation);
+        }
+
         //Обновить информацию о пользователе
         User::edit($request, Auth::id());
-        return redirect('/editProfile');
+        return redirect('editProfile')->with('status', 'Profile updated!');;
     }
 
     //Все пользователи
@@ -34,6 +48,7 @@ class UserController extends Controller
 
     //Выводим информацию о выбранном пользователе
     public function currentUser($id){
+
         //Находим пользователя
         $user = User::find($id);
         $film = new Films();
@@ -50,9 +65,9 @@ class UserController extends Controller
 
     //Добавляем комменатарий
     public function addPost(Request $request){
+        $id = Auth::id();
         //Добавить комментарий
-        Posts::store($request);
-
+        Posts::store($request, $id);
         return redirect()->action(
             'UserController@currentUser', ['id' => $request->id]
         );

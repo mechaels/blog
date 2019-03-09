@@ -15,6 +15,16 @@ class Country extends Model
         return $this->hasMany('App\Films');
     }
 
+    //Проверка таблицы на пустоту
+    public static function emp(){
+        $countries = DB::table('countries')
+            ->get();
+
+        if($countries->count() > 0){
+            return false;
+        }
+        else return true;
+    }
 
     public static function getAll(){
         $ch = curl_init();

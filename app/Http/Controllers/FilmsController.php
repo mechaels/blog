@@ -20,7 +20,7 @@ class FilmsController extends Controller
 
         $rules = array(
             'name' => 'required|unique:films',
-            'poster' => 'required',
+            'poster' => 'required|mimes:jpeg,jpg,png,gif',
             'country' => 'required',
             'year' => 'required'
         );
@@ -54,5 +54,12 @@ class FilmsController extends Controller
     {
         $countries = Country::all();
         return view('newFilm', compact('countries'));
+    }
+
+    public function currentFilm($id){
+
+        $film = Films::find($id);
+
+        return view('curFilm',compact('film'));
     }
 }

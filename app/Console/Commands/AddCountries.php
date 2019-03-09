@@ -39,8 +39,11 @@ class AddCountries extends Command
      */
     public function handle()
     {
-        $countries = Country::getAll1();
-        Country::add($countries);
+        if(Country::emp()){
+            $countries = Country::getAll1();
+            Country::add($countries);
+        }
+
         return 0;
     }
 }

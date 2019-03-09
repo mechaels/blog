@@ -1,12 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row justify-content-center">
-        <div class="top-cover center-block ">
-    <h3>Enter movie info:</h3>
+    <div class="container text-center">
+        <div class="card border-0 bg-light">
+            <div class="card-header">
+                <h1>Last added films</h1>
+            </div>
+            <div class="col-md-4" style="margin-top:10px; margin-left:380px;">
+            <div class="card">
     <form action = '/newFilm' method = 'POST' enctype="multipart/form-data">
         @csrf
-        <label>
+        <label style="margin-top:10px;">
             Name:
             <br>
             <input type = 'text' name = 'name' size= '18px' class="form-control" style="width:155px;"
@@ -44,13 +48,22 @@
         <br>
         <label>
             Poster:
-        <br>
-        <input type = 'file' name = 'poster'
-               required oninvalid="this.setCustomValidity('Выберите постер')" oninput="setCustomValidity('')">
         </label>
+        <br>
+            <input type = 'file' name = 'poster' style="width: 125px;" onchange="this.style.width = '180px';"
+                   required oninvalid="this.setCustomValidity('Выберите постер')" oninput="setCustomValidity('')">
+                <br>
+                @if ($errors->has('poster'))
+                    <span class="help-block text-danger">
+                          {{ $errors->first('poster', 'Неверный формат файла') }}
+                    </span>
+                @endif
         <br>
         <button type="submit" class="btn btn-outline-primary btn-block">   Add    </button>
     </form>
+            </form>
+            </div>
         </div>
+    </div>
     </div>
 @endsection

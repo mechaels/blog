@@ -11,20 +11,23 @@ class Posts extends Model
 {
     protected $fillable = [
         'text',
-        'users_id'
+        'ToUsers_id',
+        'ByUsers_id'
     ];
 
     //Получаем комментарии к профилю пользователя
     public static function userPosts($id){
         $posts = DB::table('posts')
-            ->where('users_id', '=', $id)
+            ->selectraw('posts.text as text, users.name as name')
+            ->leftJoin('users','posts.ByUsers_id','=','users.id')
+            ->where('posts.ToUsers_id', '=', $id)
             ->get();
 
         return $posts;
     }
 
     //Добавляем комментарий в базу
-    public static function store(Request $request)
+    public static function store(Request $request, $id)
     {
 
         $validation = Validator::make($request->all(), ['text' => 'required']);
@@ -36,7 +39,8 @@ class Posts extends Model
 
             Posts::create([
                 'text' => $request->text,
-                'users_id' => $request->id
+                'ToUsers_id' => $request->id,
+                'ByUsers_id' => $id
             ]);
 
         return redirect('/home');
