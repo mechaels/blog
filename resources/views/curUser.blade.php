@@ -32,7 +32,9 @@
                             <div class="card">
                                 <img class="card-img-top" src="{{asset('/storage/' . $film->poster)}}" width = '150px' height = '150px'>
                                 <div class="card-body text-center">
-                                    {{$film->name}}
+                                    <a href="/allFilms/{{$film->id}}">
+                                        {{$film->name}}
+                                    </a>
                                 </div>
                             </div>
                         </div>

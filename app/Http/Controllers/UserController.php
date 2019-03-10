@@ -21,8 +21,6 @@ class UserController extends Controller
 
     //Редактируем имя и номер телефона
     public function editUserPost(Request $request){
-
-        $inform = 1;
         $rules = array(
             'name' => 'required'
         );

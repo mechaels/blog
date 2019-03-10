@@ -37,4 +37,6 @@ Route::post('/allUsers1','UserController@addRate');
 
 Route::get('/allFilms/{film}','FilmsController@currentFilm');
 
+Route::get('/information','UserController@editGet');
+
 //Route::get('/test', 'TestController@test');

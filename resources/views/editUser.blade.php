@@ -22,6 +22,18 @@
                 </label>
                 <br>
                 <label>
+                    Surname:
+                    <br>
+                    <input type = 'text' name = 'surname' class="form-control" style="width:155px;" value = '{{$currentUser->surname}}'>
+                </label>
+                <br>
+                <label>
+                    Patronymic:
+                    <br>
+                    <input type = 'text' name = 'patronymic' class="form-control" style="width:155px;" value = '{{$currentUser->patronymic}}'>
+                </label>
+                <br>
+                <label>
                     Phone:
                     <br>
                     <input type = 'text' name = 'phone' class="form-control" style="width:155px;" value = '{{$currentUser->phone}}'>

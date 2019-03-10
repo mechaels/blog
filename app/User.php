@@ -42,6 +42,8 @@ class User extends Authenticatable
             ->update
             ([
                 'name' => $request->name,
+                'surname' => $request->surname,
+                'patronymic' => $request->patronymic,
                 'phone' => $request->phone
             ]);
     }
